@@ -11,10 +11,12 @@ pushd ../SteamTracking
 # update from upstream
 PULL_RESULT=$(git pull)
 
-if ["$PULL_RESULT" = "Already up-to-date."]; then
+if [ "$PULL_RESULT" = "Already up-to-date." ]; then
     echo "Already up-to-date."
     exit
 fi
+
+exit
 
 # copy structs over
 cd Structs

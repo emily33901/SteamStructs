@@ -63,7 +63,7 @@ public:
     virtual unknown_ret GetAppIdForPid(unsigned int, bool) = 0;
     virtual unknown_ret SetClientUIProcess() = 0;
     virtual unknown_ret BIsClientUIInForeground() = 0;
-    virtual unknown_ret SetOverlayChatBrowserInfo(unsigned int, int, int, int) = 0;
+    virtual unknown_ret SetOverlayChatBrowserInfo(unsigned int, int, int, int, EBrowserType) = 0;
     virtual unknown_ret ClearOverlayChatBrowserInfo(unsigned int) = 0;
     virtual unknown_ret GetOverlayChatBrowserInfo(OverlayChatBrowserInfo_t*, unsigned int, unsigned int*) = 0;
     virtual unknown_ret DispatchClientUINotification(EClientUINotificationType, char const*, unsigned int) = 0;
@@ -73,4 +73,13 @@ public:
     virtual unknown_ret DispatchOpenURLInClient(char const*, unsigned int, bool) = 0;
     virtual unknown_ret UpdateWideVineCDM(char const*) = 0;
     virtual unknown_ret DispatchClearAllBrowsingData() = 0;
+    virtual unknown_ret DispatchClientSettingsChanged() = 0;
+    virtual unknown_ret DispatchClientPostMessage(char const*, char const*, char const*) = 0;
+    virtual unknown_ret IsSteamChinaLauncher() = 0;
+    virtual unknown_ret InitFilterText(unsigned int) = 0;
+    virtual unknown_ret FilterText(unsigned int, char*, unsigned int, char const*, bool) = 0;
+    virtual unknown_ret GetIPv6ConnectivityState(ESteamIPv6ConnectivityProtocol) = 0;
+    virtual unknown_ret RecordSteamInterfaceCreation(char const*, char const*) = 0;
+    virtual unknown_ret GetRuntimeInformation() = 0;
+    virtual unknown_ret GetCloudGamingPlatform() = 0;
 };

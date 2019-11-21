@@ -1,4 +1,4 @@
-class ISteamClient019
+class ISteamClient020
 {
 public:
     virtual unknown_ret CreateSteamPipe() = 0;
@@ -8,7 +8,7 @@ public:
     virtual unknown_ret ReleaseUser(int, int) = 0;
     virtual unknown_ret GetISteamUser(int, int, char const*) = 0;
     virtual unknown_ret GetISteamGameServer(int, int, char const*) = 0;
-    virtual unknown_ret SetLocalIPBinding(unsigned int, unsigned short) = 0;
+    virtual unknown_ret SetLocalIPBinding(SteamIPAddress_t const&, unsigned short) = 0;
     virtual unknown_ret GetISteamFriends(int, int, char const*) = 0;
     virtual unknown_ret GetISteamUtils(int, char const*) = 0;
     virtual unknown_ret GetISteamMatchmaking(int, int, char const*) = 0;
@@ -42,4 +42,5 @@ public:
     virtual unknown_ret GetISteamInput(int, int, char const*) = 0;
     virtual unknown_ret GetISteamParties(int, int, char const*) = 0;
     virtual unknown_ret GetISteamRemotePlay(int, int, char const*) = 0;
+    virtual unknown_ret DestroyAllInterfaces() = 0;
 };

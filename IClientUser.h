@@ -25,7 +25,8 @@ public:
     virtual unknown_ret InitiateGameConnection(void*, int, CSteamID, CGameID, unsigned int, unsigned short, bool) = 0;
     virtual unknown_ret InitiateGameConnectionOld(void*, int, CSteamID, CGameID, unsigned int, unsigned short, bool, void*, int) = 0;
     virtual unknown_ret TerminateGameConnection(unsigned int, unsigned short) = 0;
-    virtual unknown_ret TerminateAppMultiStep(unsigned int, unsigned int) = 0;
+    virtual unknown_ret SignalAppsToShutDown(CGameID) = 0;
+    virtual unknown_ret TerminateAppMultiStep(CGameID, unsigned int) = 0;
     virtual unknown_ret SetSelfAsChatDestination(bool) = 0;
     virtual unknown_ret IsPrimaryChatDestination() = 0;
     virtual unknown_ret RequestLegacyCDKey(unsigned int) = 0;
@@ -55,6 +56,11 @@ public:
     virtual unknown_ret SetLoginInformation(char const*, char const*, bool) = 0;
     virtual unknown_ret SetTwoFactorCode(char const*) = 0;
     virtual unknown_ret ClearAllLoginInformation() = 0;
+    virtual unknown_ret BEnableEmbeddedClient(unsigned int) = 0;
+    virtual unknown_ret ResetEmbeddedClient(unsigned int) = 0;
+    virtual unknown_ret BHasEmbeddedClientToken(unsigned int) = 0;
+    virtual unknown_ret RequestEmbeddedClientToken(unsigned int) = 0;
+    virtual unknown_ret AuthorizeNewDevice(unsigned int, unsigned int, char const*) = 0;
     virtual unknown_ret GetLanguage(char*, int) = 0;
     virtual unknown_ret BIsCyberCafe() = 0;
     virtual unknown_ret BIsAcademicAccount() = 0;
@@ -81,6 +87,7 @@ public:
     virtual unknown_ret GetAvailableSeats(unsigned int) = 0;
     virtual unknown_ret GetAssociatedSiteName() = 0;
     virtual unknown_ret BIsRunningInCafe() = 0;
+    virtual unknown_ret BAllowCachedCredentialsInCafe() = 0;
     virtual unknown_ret RequiresLegacyCDKey(unsigned int, bool*) = 0;
     virtual unknown_ret GetLegacyCDKey(unsigned int, char*, int) = 0;
     virtual unknown_ret SetLegacyCDKey(unsigned int, char const*) = 0;
@@ -168,6 +175,8 @@ public:
     virtual unknown_ret SetUserMachineName(char const*) = 0;
     virtual unknown_ret GetUserMachineName(char*, int) = 0;
     virtual unknown_ret GetEmailDomainFromLogonFailure(char*, int) = 0;
+    virtual unknown_ret GetDurationControl() = 0;
+    virtual unknown_ret GetDurationControlForApp(unsigned int) = 0;
     virtual unknown_ret BIsSubscribedApp(unsigned int) = 0;
     virtual unknown_ret GetSubscribedApps(unsigned int*, unsigned int, bool) = 0;
     virtual unknown_ret RegisterActivationCode(char const*) = 0;
@@ -198,6 +207,7 @@ public:
     virtual unknown_ret GetParentalUnlockTime() = 0;
     virtual unknown_ret BGetRecoveryEmail(char*, int) = 0;
     virtual unknown_ret RequestParentalRecoveryEmail() = 0;
+    virtual unknown_ret BIsLockFromSiteLicense() = 0;
     virtual unknown_ret BGetSerializedParentalSettings(CUtlBuffer*) = 0;
     virtual unknown_ret BSetParentalSettings(CUtlBuffer*) = 0;
     virtual unknown_ret BDisableParentalSettings() = 0;
@@ -213,12 +223,18 @@ public:
     virtual unknown_ret BIsOtherSessionPlaying(unsigned int*) = 0;
     virtual unknown_ret BKickOtherPlayingSession() = 0;
     virtual unknown_ret BIsAccountLockedDown() = 0;
+    virtual unknown_ret ClearAndSetAppTags(CGameID, SteamParamStringArray_t const*) = 0;
     virtual unknown_ret RemoveAppTag(CGameID, char const*) = 0;
     virtual unknown_ret AddAppTag(CGameID, char const*) = 0;
+    virtual unknown_ret ClearAppTags(CGameID) = 0;
     virtual unknown_ret SetAppHidden(CGameID, bool) = 0;
     virtual unknown_ret RequestAccountLinkInfo() = 0;
     virtual unknown_ret RequestSurveySchedule() = 0;
     virtual unknown_ret RequestNewSteamAnnouncementState() = 0;
     virtual unknown_ret UpdateSteamAnnouncementLastRead(unsigned long long, unsigned int) = 0;
     virtual unknown_ret GetMarketEligibility() = 0;
+    virtual unknown_ret UpdateGameVrDllState(CGameID, bool, bool) = 0;
+    virtual unknown_ret BIsAnyGameOrServiceAppRunning() = 0;
+    virtual unknown_ret BGetAppArrayMinutesPlayed(unsigned int*, int, int*, int*) = 0;
+    virtual unknown_ret BGetAppsLastPlayedTime(unsigned int*, int, unsigned int*) = 0;
 };

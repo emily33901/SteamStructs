@@ -1,4 +1,4 @@
-class IClientNetworking
+class ISteamNetworking006
 {
 public:
     virtual unknown_ret SendP2PPacket(CSteamID, void const*, unsigned int, EP2PSend, int) = 0;

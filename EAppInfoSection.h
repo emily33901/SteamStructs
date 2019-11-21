@@ -18,4 +18,7 @@ typedef enum EAppInfoSection
     k_EAppInfoSectionCommunity, // community
     k_EAppInfoSectionStore, // store
     k_EAppInfoSectionLocalization, // localization
+    k_EAppInfoSectionBroadcastgamedata, // broadcastgamedata
+    k_EAppInfoSectionComputed, // computed
+    k_EAppInfoSectionAlbummetadata, // albummetadata
 } EAppInfoSection;

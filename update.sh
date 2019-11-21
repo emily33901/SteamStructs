@@ -16,8 +16,6 @@ if [ "$PULL_RESULT" = "Already up-to-date." ]; then
     exit
 fi
 
-exit
-
 # copy structs over
 cd Structs
 cp *.h $WD

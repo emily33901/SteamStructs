@@ -61,6 +61,9 @@ public:
     virtual unknown_ret SetStreamingPIN(char const*) = 0;
     virtual unknown_ret GetStreamingPINSize(int*) = 0;
     virtual unknown_ret UnlockHEVC() = 0;
+    virtual unknown_ret UsedVideoX264() = 0;
+    virtual unknown_ret UsedVideoH264() = 0;
+    virtual unknown_ret UsedVideoHEVC() = 0;
     virtual unknown_ret BHasRemotePlayInviteAndSession(CSteamID) = 0;
     virtual unknown_ret CreateRemotePlayInviteAndSession(CSteamID, unsigned int) = 0;
     virtual unknown_ret CancelRemotePlayInviteAndSession(CSteamID) = 0;
@@ -73,5 +76,8 @@ public:
     virtual unknown_ret GetPerUserInputSettings(CSteamID, RemoteClientInputSettings_t*) = 0;
     virtual unknown_ret OnClientUsedInput(CSteamID, EClientUsedInputType) = 0;
     virtual unknown_ret OnPlaceholderStateChanged(bool) = 0;
+    virtual unknown_ret OnRemoteClientRemotePlayClearControllers() = 0;
+    virtual unknown_ret OnRemoteClientRemotePlayControllerIndexSet(CSteamID, unsigned int) = 0;
+    virtual unknown_ret OnRemotePlayUIMovedController() = 0;
     virtual unknown_ret ShutdownStreamClients(bool) = 0;
 };
